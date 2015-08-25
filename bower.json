@@ -1,0 +1,15 @@
+{
+  "name": "portfolio",
+  "main": "index.js",
+  "version": "1.0.0",
+  "authors": [
+    "Pourya Daneshvar <pourya@daneshvar.me>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "system.js": "~0.18.14"
+  }
+}
