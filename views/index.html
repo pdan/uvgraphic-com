@@ -1,17 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="/semantic/semantic.rtl.min.css" media="screen" title="no title" charset="utf-8">
   <title></title>
-
 </head>
 
-<body>
+<body ng-app="portfolio">
+  <div id="loader" class="ui active loader"></div>
+  <div id="main" class="ui container" style="display: none">
+    <!-- <div class="ui text menu">
+      <div class="item">
+        <img src="/images/new-school.jpg">
+      </div>
+      <a class="browse item">
+        Browse Courses
+        <i class="dropdown icon"></i>
+      </a>
+      <div class="ui popup">
+        <div class="ui four column relaxed equal height divided grid">
+          <div class="column">
+            <h4 class="ui header">Fabrics</h4>
+            <div class="ui link list">
+              <a class="item">Cashmere</a>
+              <a class="item">Linen</a>
+              <a class="item">Cotton</a>
+              <a class="item">Viscose</a>
+            </div>
+          </div>
+          <div class="column">
+            <h4 class="ui header">Size</h4>
+            <div class="ui link list">
+              <a class="item">Small</a>
+              <a class="item">Medium</a>
+              <a class="item">Large</a>
+              <a class="item">Plus Sizes</a>
+            </div>
+          </div>
+          <div class="column">
+            <h4 class="ui header">Colored</h4>
+            <div class="ui link list">
+              <a class="item">Neutrals</a>
+              <a class="item">Brights</a>
+              <a class="item">Pastels</a>
+            </div>
+          </div>
+          <div class="column">
+            <h4 class="ui header">Types</h4>
+            <div class="ui link list">
+              <a class="item">Knitwear</a>
+              <a class="item">Outerwear</a>
+              <a class="item">Pants</a>
+              <a class="item">Shoes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui right dropdown item">
+        More
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">Applications</div>
+          <div class="item">International Students</div>
+          <div class="item">Scholarships</div>
+        </div>
+      </div>
+    </div> -->
 
-  <script src="/socket.io/socket.io.js"></script>
+  </div>
+  <script src="/js/vendor/system.js"></script>
+  <script src="/js/config.js"></script>
   <script>
-    var socket = io();
+    System.import('js/main');
   </script>
 </body>
 

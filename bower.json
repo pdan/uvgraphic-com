@@ -5,11 +5,10 @@
   "authors": [
     "Pourya Daneshvar <pourya@daneshvar.me>"
   ],
-  "moduleType": [
-    "amd"
-  ],
   "license": "MIT",
   "dependencies": {
-    "system.js": "~0.18.14"
+    "angular": "~1.4.4",
+    "jquery": "~2.1.4",
+    "system.js": "~0.18.16"
   }
 }
