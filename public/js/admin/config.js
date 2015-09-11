@@ -8,7 +8,9 @@ System.config({
     'angular': '/js/vendor/angular.min',
     'jquery': '/js/vendor/jquery.min',
     'semantic': '/semantic/semantic.min',
-    'css': '/js/vendor/css.js'
+    'css': '/js/vendor/css.js',
+    'admin': '/js/admin/',
+    'ngInfiniteScroll': '/js/vendor/ng-infinite-scroll'
   },
   meta: {
     'angular': {
@@ -17,7 +19,7 @@ System.config({
     'semantic': {
       deps: [
         'jquery',
-        // '/css/sticky.css!css'
+        '/css/admin.css!css'
       ]
     }
   }

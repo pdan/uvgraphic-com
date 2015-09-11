@@ -1,0 +1,36 @@
+<div class="ui breadcrumb">
+  <a class="section">مدیریت</a>
+  <i class="right angle icon divider"></i>
+  <div class="active section">نوشته جدید</div>
+</div>
+<br>
+<br>
+<form class="ui form" ng-submit="updateProject()">
+  <div class="ui grid">
+    <div class="six wide column">
+      <div class="field">
+        <label>نام پروژه</label>
+        <input type="text" name="title" placeholder="نام پروژه" ng-model="project.name">
+      </div>
+      <div class="field">
+        <label>برچسب‌ها</label>
+        <input type="text" name="last-name" placeholder="برچسب‌ها" ng-model="project.tags">
+      </div>
+      <div class="ui buttons">
+        <a class="ui button" ng-click="cancelEditProject()">لغو</a>
+        <div class="or" data-text="یا"></div>
+        <button class="ui positive button" type="submit">ذخیره</button>
+      </div>
+    </div>
+    <div class="ten wide column">
+      <div class="field">
+        <div class="ui action">
+          <label for="attachmentName" class="ui labeled icon button">
+            <i class="attach icon"></i> بارگذاری تصاویر
+            <input type="file" id="attachmentName" name="attachmentName" multiple="multiple" style="display: none">
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

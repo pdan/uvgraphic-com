@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'IRYekan';
+  src: url('../fonts/IRYekan.eot');
+  src: url('../fonts/IRYekan.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/IRYekan.woff') format('woff'), /* Modern Browsers */ url('../fonts/IRYekan.ttf') format('truetype');
+  
+  /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'IRYekanBold';
+  src: url('../fonts/IRYekanBold.eot');
+  src: url('../fonts/IRYekanBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/IRYekanBold.woff') format('woff'), /* Modern Browsers */ url('../fonts/IRYekanBold.ttf') format('truetype');
+  
+  /* IE9 Compat Modes */
+}
+body {
+  font-family: 'IRYekan';
+}

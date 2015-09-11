@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI x.x - Site
+ * # Semantic UI 2.1.3 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14,7 +14,6 @@
              Page
 *******************************/
 
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 html,
 body {
   height: 100%;

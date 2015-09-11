@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="/semantic/semantic.rtl.min.css" media="screen" title="no title" charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <div id="loader" class="ui active loader"></div>
+  <div id="main" class="ui container" ng-controller="mainController" style="display: none">
+    <div class="header"></div>
+    <div class="ui top attached menu">
+      <a class="ui icon item" ng-show="!newStatus" ng-click="createProject()">
+        <i class="plus icon"></i>
+      </a>
+      <a class="ui icon item" ng-show="newStatus" ng-click="closeEdit()">
+        <i class="remove icon"></i>
+      </a>
+      <div class="right menu">
+        <div class="ui right aligned category search item">
+          <div class="ui transparent icon input">
+            <input class="prompt" type="text" placeholder="Search animals...">
+            <i class="search link icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+    </div>
+    <div class="ui bottom attached segment">
+      <div id="internalLoader" class="ui loader"></div>
+      <new-post ng-show="newStatus"></new-post>
+      <posts-list ng-show="!newStatus"></posts-list>
+    </div>
+  </div>
+  <script src="/js/vendor/system.js"></script>
+  <script src="/js/admin/config.js"></script>
+  <script>
+    System.import('js/admin/index');
+  </script>
+</body>
+
+</html>

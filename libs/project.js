@@ -5,12 +5,8 @@ function Project(db) {
 
   this.create = function(doc, callback) {
     var project = {
-      name: doc.name,
-      description: doc.description,
-      pictures: [],
-      date: doc.created,
-      tags: doc.tags,
-      created: new Date().getTime()
+      name: 'New Project',
+      date: new Date().getTime()
     };
     projects.insert(project, function(err, result) {
       if (err) {
@@ -18,6 +14,29 @@ function Project(db) {
       }
 
       callback(result.ops);
+    });
+  };
+
+  this.update = function(doc, callback) {
+    var query = {
+      '_id': new ObjectId(doc._id)
+    };
+
+    var project = {
+      '$set': {
+        name: doc.name,
+        description: doc.description,
+        pictures: doc.pictures,
+        tags: doc.tags,
+        created: doc.created
+      }
+    };
+    projects.update(query, project, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      result.result._id = query._id;
+      callback(result);
     });
   };
 
@@ -33,6 +52,24 @@ function Project(db) {
 
       callback(result);
     });
+  };
+
+  this.remove = function(doc, callback) {
+    var query = {
+      '_id': new ObjectId(doc._id)
+    };
+
+    projects.remove(query, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      callback({
+        result: result,
+        _id: doc._id
+      });
+    });
+
   };
 
   this.pagination = function(doc, callback) {

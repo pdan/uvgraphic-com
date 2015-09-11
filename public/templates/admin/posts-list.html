@@ -1,0 +1,21 @@
+<div class="ui breadcrumb">
+  <a class="section">مدیریت</a>
+  <i class="right angle icon divider"></i>
+  <div class="active section">لیست نوشته‌ها</div>
+</div>
+<div id="postsList" class="ui middle aligned divided list"  infinite-scroll="getProjects()" infinite-scroll-disabled="infiniteScrollBusy" infinite-scroll-distance="0">
+  <div class="item" ng-repeat="project in projects">
+    <div class="right floated content">
+      <button class="circular blue ui icon button" ng-click="editProject($index)">
+        <i class="icon write"></i>
+      </button>
+      <button class="circular red ui icon button remove-project" ng-click="removeProject($index)">
+        <i class="icon remove"></i>
+      </button>
+    </div>
+    <img class="ui avatar image" src="/images/avatar2/small/lena.png">
+    <div class="content">
+      {{ project.name }}
+    </div>
+  </div>
+</div>
