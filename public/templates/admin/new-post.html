@@ -13,8 +13,16 @@
         <input type="text" name="title" placeholder="نام پروژه" ng-model="project.name">
       </div>
       <div class="field">
+        <label>توضیحات</label>
+        <textarea rows="2" ng-model="project.description"></textarea>
+      </div>
+      <div class="field">
+        <label>زمان اجرای پروژه</label>
+        <input type="date" name="created" placeholder="زمان اجرای پروژه" ng-model="project.created" time-to-stamp>
+      </div>
+      <div class="field">
         <label>برچسب‌ها</label>
-        <input type="text" name="last-name" placeholder="برچسب‌ها" ng-model="project.tags">
+        <input type="text" name="last-name" placeholder="برچسب‌ها" ng-model="project.tags" tags-to-array>
       </div>
       <div class="ui buttons">
         <a class="ui button" ng-click="cancelEditProject()">لغو</a>
@@ -25,10 +33,31 @@
     <div class="ten wide column">
       <div class="field">
         <div class="ui action">
-          <label for="attachmentName" class="ui labeled icon button">
+          <label for="imageUploader" class="ui labeled icon button">
             <i class="attach icon"></i> بارگذاری تصاویر
-            <input type="file" id="attachmentName" name="attachmentName" multiple="multiple" style="display: none">
+            <input type="file" id="imageUploader" name="imageUploader" multiple="multiple" style="display: none" onchange="angular.element(this).scope().uploadImages(this)">
           </label>
+        </div>
+      </div>
+      <div class="ui four column grid">
+        <div class="column" ng-repeat="image in project.pictures track by $index">
+          <div class="ui fluid card">
+            <div class="image">
+              <img ng-src="{{ '/uploads/' + project._id + '/' + image.filename }}">
+            </div>
+            <div class="extra content">
+              <div class="ui one buttons small icon">
+                <div class="ui blue button" ng-click="setAsMainPhoto($index)" ng-class="{basic: !image.main}">
+                  <i class="checkmark icon"></i>
+                </div>
+              </div>
+              <div class="ui one buttons small icon">
+                <div class="ui basic red button" ng-click="removePhoto($index)">
+                  <i class="remove outline icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

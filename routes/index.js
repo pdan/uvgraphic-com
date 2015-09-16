@@ -1,9 +1,10 @@
 var Project = require('../libs/project');
-var siofu = require('socketio-file-upload');
+var File = require('../libs/file');
 
 module.exports = exports = function(app, db, router, io) {
   var project = new Project(db);
-  app.use(siofu.router);
+  var file = new File();
+
   router.use(function(req, res, next) {
     // do logging
     next(); // make sure we go to the next routes and don't stop here
@@ -49,12 +50,24 @@ module.exports = exports = function(app, db, router, io) {
     });
 
     socket.on('files upload', function(doc) {
-      project.upload(doc, function(result) {
-        var uploader = new siofu();
-        uploader.dir = '/public/images/' + result._id;
-        uploader.listen(socket);
-        socket.emit('pagination project', result);
+      file.saveAttachment(doc, function(result) {
+        socket.emit('files upload', result);
       });
+      // These are should be review on them class files
+      // var filename = new Date().getTime() + '' + process.hrtime()[1];
+      // file.save({
+      //   filename: filename,
+      //   _id: doc._id,
+      //   type: doc.type,
+      //   based64Image: doc.based64Image
+      // });
+      //
+      // project.pushFileToDb({
+      //   _id: doc._id,
+      //   picture: filename + '.' + doc.type
+      // }, function(callback) {
+      //   console.log(callback.result);
+      // });
     });
   });
 

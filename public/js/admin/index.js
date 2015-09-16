@@ -5,6 +5,8 @@ define([
   'admin/main.controller',
   'admin/new-post.directive',
   'admin/posts-list.directive',
+  'admin/tags.directive',
+  'admin/time.directive',
   'admin/socket.factory',
   'semantic'
 ], function(angular, $, app) {

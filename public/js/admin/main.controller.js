@@ -8,6 +8,7 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
       skip: 0,
       limit: 10
     };
+    $scope.images = [];
     $scope.infiniteScrollBusy = false;
 
     socket.on('create project', function(data) {
@@ -26,6 +27,17 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
       $scope.switchLoader(false);
     });
 
+    socket.on('files upload', function(doc) {
+      if ($scope.project.pictures === undefined) {
+        $scope.project.pictures = [];
+      }
+      if ($scope.project._id === doc._id) {
+        $scope.project.pictures.push({
+          filename: doc.filename
+        });
+      }
+    });
+
     socket.on('pagination project', function(docs) {
       angular.forEach(docs, function(doc, i, obj) {
         $scope.projects.push(doc);
@@ -36,11 +48,9 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
     });
 
     socket.on('remove project', function(doc) {
-      console.log(doc);
 
       for (var i in $scope.projects) {
         if (doc._id === $scope.projects[i]._id) {
-          console.log($scope.projects[i]._id);
           $scope.projects.splice(i, 1);
         }
       }
@@ -52,11 +62,26 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
 
     $scope.editProject = function(index) {
       $scope.newStatus = true;
+      $scope.infiniteScrollBusy = true;
       $scope.project = angular.copy($scope.projects[index]);
+      // $scope.project.created = new Date($scope.project.created);
+    };
+
+    $scope.setAsMainPhoto = function(index) {
+      angular.forEach($scope.project.pictures, function(value) {
+        value.main = false;
+      });
+      $scope.project.pictures[index].main = true;
+    };
+
+    $scope.removePhoto = function(index) {
+      $scope.project.pictures.splice(index, 1);
     };
 
     $scope.closeEdit = function() {
       $scope.newStatus = false;
+      $scope.infiniteScrollBusy = false;
+      $scope.images = [];
     };
 
     $scope.cancelEditProject = function() {
@@ -75,6 +100,38 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
     $scope.updateProject = function() {
       $scope.switchLoader(true);
       socket.emit('update project', $scope.project);
+    };
+
+    $scope.uploadImages = function(element) {
+      var ImageLoader = function(imageIndex) {
+
+        return function(evt) {
+          $scope.images[imageIndex].src = evt.target.result;
+          window.gsm = evt;
+          socket.emit('files upload', {
+            _id: $scope.project._id,
+            name: $scope.images[imageIndex].fileName,
+            type: $scope.images[imageIndex].fileType,
+            based64Image: evt.target.result
+          });
+          $scope.$apply();
+        };
+      };
+
+      for (var i = 0; i < element.files.length; i++) {
+        var imageType = element.files[i].type.match('image/(png|jpeg)');
+        if (imageType === null) {
+          continue;
+        }
+
+        var imageIndex = $scope.images.push(new Image());
+        $scope.images[imageIndex - 1].fileName = element.files[i].name;
+        $scope.images[imageIndex - 1].fileType = imageType[1];
+        var reader = new FileReader();
+        reader.onloadend = new ImageLoader(imageIndex - 1);
+        //And now, read the image and base64
+        reader.readAsDataURL(element.files[i]);
+      }
     };
 
     $scope.getProjects = function() {
