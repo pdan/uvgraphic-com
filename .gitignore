@@ -1,9 +1,10 @@
 node_modules/
 bower_components/
-public/**/vendor
-uploads/*
+public/uploads/*
 view/index.build.html
 public/packages
+views/build
+public/css/*
 
 # Numerous always-ignore extensions
 *.diff
