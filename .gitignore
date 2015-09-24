@@ -5,6 +5,7 @@ view/index.build.html
 public/packages
 views/build
 public/css/*
+public/js/main/build*
 
 # Numerous always-ignore extensions
 *.diff

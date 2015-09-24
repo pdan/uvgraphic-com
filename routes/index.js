@@ -11,6 +11,10 @@ module.exports = exports = function(app, db, router, io) {
   });
 
   app.get('/', function(res, req) {
+    if (process.env.NODE_ENV === 'production') {
+      req.render('build/index.html');
+      return;
+    }
     req.render('index.html');
   });
 

@@ -42,8 +42,11 @@ module.exports = function(grunt) {
           compress: true
         },
         files: {
-          '<%= doc.static %>/styles/main.css': [
-            '<%= doc.render %>/less/main.less'
+          '<%= app.public %>/css/main.css': [
+            '<%= app.public %>/less/main.less'
+          ],
+          '<%= app.public %>/css/admin.css': [
+            '<%= app.public %>/less/admin.less'
           ]
         }
       }
@@ -52,8 +55,8 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          '<%= doc.static %>/scripts/scripts.min.js': [
-            '<%= doc.static %>/scripts/scripts.js'
+          '<%= app.public %>/js/main/build.min.js': [
+            '<%= app.public %>/js/main/build.js'
           ]
         }
       }
@@ -64,9 +67,8 @@ module.exports = function(grunt) {
         algorithm: 'md5',
         length: 8
       },
-      js: {
-        src: 'build.js',
-        dest: 'public/js/main'
+      buildJS: {
+        src: '<%= app.public %>/js/main/build.min.js'
       }
     },
 
@@ -74,37 +76,45 @@ module.exports = function(grunt) {
       options: {
         stderr: false
       },
-      target: {
-        command: 'jspm bundle-sfx js/main/index.js public/js/main/build.js'
+      jspm: {
+        command: 'jspm bundle-sfx js/main/index.js <%= app.public %>/js/main/build.js'
       }
     },
 
     htmlbuild: {
       dist: {
         src: 'views/index.html',
-        dest: 'views/build/',
+        dest: 'views/build',
         options: {
           beautify: true,
-          // prefix: '//some-cdn',
-          // relative: true,
+          prefix: '/js',
+          relative: false,
           scripts: {
-            build: '<%= app.public %>/js/main/build.*.js'
+
+            builJS: {
+							cwd: '<%= app.public %>/',
+							files: 'js/main/build.*.js'
+						}
           },
         }
       }
     },
+
     clean: {
-      first: ['<%= app.public %>/js/main/build.*.js'],
-			last: ['<%= app.public %>/js/main/build.js']
+      first: ['<%= app.public %>/js/main/build.*js*'],
+      last: [
+        '<%= app.public %>/js/main/build.js',
+        '<%= app.public %>/js/main/build.min.js'
+      ]
     },
 
     imagemin: {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= doc.static %>/images',
+          cwd: '/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= doc.static %>/images'
+          dest: '/images'
         }]
       }
     },
@@ -113,9 +123,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= doc.static %>/images',
+          cwd: '/images',
           src: '{,*/}*.svg',
-          dest: '<%= doc.static %>/images'
+          dest: '/images'
         }]
       }
     }
@@ -136,11 +146,13 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 'Build product',
     function() {
       grunt.task.run([
+				'less:product',
         'clean:first',
         'shell:jspm',
-        'filerev:js',
+        'uglify',
+        'filerev:buildJS',
         'htmlbuild',
-				'clean:last'
+        'clean:last'
       ]);
     });
 
