@@ -15,12 +15,16 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.4.6",
+    "angular-route": "github:angular/bower-angular-route@1.4.6",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.24",
     "core-js": "npm:core-js@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.17",
     "jquery": "github:components/jquery@2.1.4",
     "sroze/ngInfiniteScroll": "github:sroze/ngInfiniteScroll@1.2.1",
+    "github:angular/bower-angular-route@1.4.6": {
+      "angular": "github:angular/bower-angular@1.4.6"
+    },
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },

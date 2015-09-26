@@ -10,14 +10,6 @@ module.exports = exports = function(app, db, router, io) {
     next(); // make sure we go to the next routes and don't stop here
   });
 
-  app.get('/', function(res, req) {
-    if (process.env.NODE_ENV === 'production') {
-      req.render('build/index.html');
-      return;
-    }
-    req.render('index.html');
-  });
-
   app.get('/admin', function(res, req) {
     req.render('admin.html');
   });
@@ -75,5 +67,12 @@ module.exports = exports = function(app, db, router, io) {
     });
   });
 
-  app.use('/api', router);
+  // app.use('/api', router);
+  app.all('/*', function(res, req) {
+    if (process.env.NODE_ENV === 'production') {
+      req.render('build/index.html');
+      return;
+    }
+    req.render('index.html');
+  });
 };
