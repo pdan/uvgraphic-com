@@ -2,10 +2,6 @@
   <div class="ui stackable four column grid gallery" ng-include="'/templates/main/thumbnail.html'">
   </div>
   <div class="ui pagination menu">
-    <a class="active item">1</a>
-    <div class="disabled item">...</div>
-    <a class="item">10</a>
-    <a class="item">11</a>
-    <a class="item">12</a>
+    <a class="{{ page.class }} item" href="{{ page.number }}" ng-repeat="page in pagination track by $index"> {{ page.number }}</a>
   </div>
 </div>

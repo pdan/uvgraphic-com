@@ -52,6 +52,12 @@ module.exports = exports = function(app, db, router, io) {
       });
     });
 
+    socket.on('query count', function(doc) {
+      project.queryCount(doc, function(result) {
+        socket.emit('query count', result);
+      });
+    });
+
     socket.on('files upload', function(doc) {
       file.saveAttachment(doc, function(result) {
         socket.emit('files upload', result);

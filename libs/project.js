@@ -128,7 +128,7 @@ function Project(db) {
       sort: [
         [doc.sort, -1]
       ],
-      skip: doc.skip,
+      skip: doc.skip > 0 ? doc.skip : 0,
       limit: doc.limit
     };
 
@@ -137,10 +137,35 @@ function Project(db) {
     }
 
     if (doc.tags && doc.tags.constructor === Array) {
-      query.tags = {'$in': doc.tags};
+      query.tags = {
+        '$in': doc.tags
+      };
     }
 
     projects.find(query, options).toArray(function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      callback(result);
+    });
+  };
+
+  this.queryCount = function(doc, callback) {
+    var query = {};
+    var options = {};
+
+    if (doc.clear) {
+      query['pictures.main'] = true;
+    }
+
+    if (doc.tags && doc.tags.constructor === Array) {
+      query.tags = {
+        '$in': doc.tags
+      };
+    }
+
+    projects.count(query, function(err, result) {
       if (err) {
         throw err;
       }

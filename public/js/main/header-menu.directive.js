@@ -15,10 +15,7 @@ function HeaderMenu($location, socket) {
         angular.forEach(swap, function(value, index) {
           scope.tags.push([index, value]);
         });
-
-        // scope.$apply();
       });
-
 
       scope.updateMenuBasedOnLocation = function () {
           var prefix = $location.path().split('/')[1];

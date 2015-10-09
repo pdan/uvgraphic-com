@@ -24,11 +24,11 @@ export default function routing($routeProvider, $locationProvider) {
       templateUrl: '/templates/main/project.html',
       controller: 'ProjectController'
     })
-    .when('/portfolio', {
+    .when('/portfolio/:page', {
       templateUrl: '/templates/main/portfolio.html',
       controller: 'PortfolioController'
     })
-    .when('/portfolio/:tag', {
+    .when('/portfolio/:tag/:page', {
       templateUrl: '/templates/main/portfolio.html',
       controller: 'PortfolioController'
     })

@@ -6,12 +6,12 @@
       </a>
     </div>
     <div class="ui secondary pointing menu">
-      <a class="item" href="/portfolio" ng-class="{active: updateMenuBasedOnLocation() === 'portfolio'}">پروژه‌ها</a>
+      <a class="item" href="/portfolio/0" ng-class="{active: updateMenuBasedOnLocation() === 'portfolio'}">پروژه‌ها</a>
       <a class="item" href="/about" ng-class="{active: updateMenuBasedOnLocation() === 'about'}">درباره ماوراء بنفش</a>
       <a class="item" href="/contact" ng-class="{active: updateMenuBasedOnLocation() === 'contact'}">تماس</a>
     </div>
     <div class="ui submenu" ng-show="submenu">
-      <a class="item" href="/portfolio/{{ tag[0] }}" ng-repeat="tag in tags">
+      <a class="item" href="/portfolio/{{ tag[0] }}/0" ng-repeat="tag in tags">
         {{ tag[0] }}
       </a>
     </div>
