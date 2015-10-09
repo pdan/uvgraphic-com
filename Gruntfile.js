@@ -90,10 +90,15 @@ module.exports = function(grunt) {
           prefix: '/js',
           relative: false,
           scripts: {
-
-            builJS: {
+            buildJS: {
 							cwd: '<%= app.public %>/',
 							files: 'js/main/build.*.js'
+						}
+          },
+          styles: {
+            buildCSS: {
+							cwd: '<%= app.public %>/',
+							files: 'css/main.css'
 						}
           },
         }

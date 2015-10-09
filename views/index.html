@@ -6,17 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" href="/semantic/semantic.rtl.min.css" media="screen" title="no title" charset="utf-8">
+  <!-- build:style buildCSS  -->
+  <!-- /build -->
   <title></title>
 </head>
 
 <body>
   <div id="loader" class="ui active loader"></div>
-  <div id="main" class="ui container" style="display: none">
+  <div id="main" style="display: none">
+    <header-menu></header-menu>
     <div ng-view="">
 
     </div>
+    <footer>
+      <div class="ui container">
+        FOOTER
+      </div>
+    </footer>
   </div>
-  <!-- build:script builJS -->
+  <!-- build:script buildJS -->
   <script src="/packages/system.js"></script>
   <script src="/config.js"></script>
   <script>

@@ -1,0 +1,17 @@
+<div class="column thumbnail" ng-repeat="project in projects">
+  <div class="wrapper">
+    <div class="image">
+      <a href="/project/{{ project._id }}" class="main">
+        <img alt="Small" ng-src="/uploads/{{ project._id }}/{{ project.pictures | MainPicture }}" class="show">
+      </a>
+    </div>
+  </div>
+  <div class="caption">
+    <div class="title">
+      <a href="/project/{{ project._id }}">{{ project.name }}</a>
+    </div>
+    <div class="sub">
+      2 days ago
+    </div>
+  </div>
+</div>

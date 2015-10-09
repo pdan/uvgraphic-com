@@ -1,9 +1,9 @@
 class HomeController {
-  constructor() {
-    this.parameter = 'Welcome To This Site';
+  constructor($scope, socket) {
+    var socket = socket.socket;
   }
 }
 
-HomeController.$inject = [];
+HomeController.$inject = ['$scope', 'socket'];
 
 export default HomeController

@@ -2,8 +2,10 @@ var ObjectId = require('mongodb').ObjectId;
 
 function Project(db) {
   var projects = db.collection('projects');
+  var tags = db.collection('tags');
 
   this.create = function(doc, callback) {
+    var self = this;
     var project = {
       name: 'New Project',
       date: new Date().getTime()
@@ -13,11 +15,13 @@ function Project(db) {
         throw err;
       }
 
+      self.updateTags();
       callback(result.ops);
     });
   };
 
   this.update = function(doc, callback) {
+    var self = this;
     var query = {
       '_id': new ObjectId(doc._id)
     };
@@ -36,6 +40,50 @@ function Project(db) {
         throw err;
       }
       result.result._id = query._id;
+      self.updateTags();
+      callback(result);
+    });
+  };
+
+  this.updateTags = function(callback) {
+    tags.drop();
+
+    projects.aggregate([{
+      '$match': {
+        'tags': {
+          '$exists': true
+        }
+      }
+    }, {
+      '$group': {
+        '_id': '$tags'
+      }
+    }]).each(function(err, doc) {
+      if (err) {
+        throw err;
+      }
+      if (doc) {
+        tags.insert({
+          names: doc._id
+        }, function(err, result) {
+          if (err) {
+            throw err;
+          }
+        });
+      } else if (callback) {
+        callback();
+      }
+    });
+  };
+
+  this.getTags = function(doc, callback) {
+    var query = {};
+
+    tags.find(query).toArray(function(err, result) {
+      if (err) {
+        throw err;
+      }
+
       callback(result);
     });
   };
@@ -55,6 +103,7 @@ function Project(db) {
   };
 
   this.remove = function(doc, callback) {
+    var self = this;
     var query = {
       '_id': new ObjectId(doc._id)
     };
@@ -64,6 +113,7 @@ function Project(db) {
         throw err;
       }
 
+      self.updateTags();
       callback({
         result: result,
         _id: doc._id
@@ -73,6 +123,7 @@ function Project(db) {
   };
 
   this.pagination = function(doc, callback) {
+    var query = {};
     var options = {
       sort: [
         [doc.sort, -1]
@@ -80,7 +131,16 @@ function Project(db) {
       skip: doc.skip,
       limit: doc.limit
     };
-    projects.find({}, options).toArray(function(err, result) {
+
+    if (doc.clear) {
+      query['pictures.main'] = true;
+    }
+
+    if (doc.tags && doc.tags.constructor === Array) {
+      query.tags = {'$in': doc.tags};
+    }
+
+    projects.find(query, options).toArray(function(err, result) {
       if (err) {
         throw err;
       }

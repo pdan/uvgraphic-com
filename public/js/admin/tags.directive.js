@@ -9,7 +9,7 @@ define(['admin/app'], function(app) {
 
           var cleaned = [];
 
-          var tagsArray = tags.split(',');
+          var tagsArray = tags.split(/[,،]+/);
 
           for (var i = 0; i < tagsArray.length; i++) {
             if ((cleaned.indexOf(tagsArray[i]) === -1) && tagsArray[i] !== '') {

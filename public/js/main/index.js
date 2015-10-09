@@ -1,3 +1,5 @@
+import '../../css/main.css!';
+
 import app from 'js/main/app';
 import $ from 'jquery';
 

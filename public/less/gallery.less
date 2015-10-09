@@ -1,0 +1,49 @@
+.ui.grid.gallery {
+  margin-top: 20px;
+  .thumbnail {
+    min-height: 1px;
+    .wrapper {
+      background-color: #fff;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+      -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+      box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+      padding: 15px 19px;
+      padding: 15px;
+      overflow: hidden;
+      .image {
+        img {
+          max-width: 100%;
+          height: auto;
+          position: relative;
+        }
+
+        a.main {
+          display: block;
+          overflow: hidden;
+          height: 200px;
+        }
+      }
+    }
+    .caption {
+      padding-top: 10px;
+      padding-bottom: 20px;
+      .title {
+        font-size: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        a {
+          color: #555555;
+        }
+      }
+      .sub {
+        color: #aaaaaa;
+        padding-top: 5px;
+      }
+    }
+  }
+}

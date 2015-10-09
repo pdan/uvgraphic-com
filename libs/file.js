@@ -10,7 +10,7 @@ function File() {
 
     // Create directory path if it doesn't exist
     if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath, 766, function(err) {
+      fs.mkdirSync(dirPath, 0766, function(err) {
         if (err) {
           throw err;
         }

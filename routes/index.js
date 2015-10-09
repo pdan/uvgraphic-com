@@ -15,6 +15,13 @@ module.exports = exports = function(app, db, router, io) {
   });
 
   io.on('connection', function(socket) {
+
+    socket.on('get tags', function(doc) {
+      project.getTags(doc, function(result) {
+        socket.emit('get tags', result);
+      });
+    });
+
     socket.on('create project', function(doc) {
       project.create(doc, function(result) {
         socket.emit('create project', result);
@@ -49,21 +56,6 @@ module.exports = exports = function(app, db, router, io) {
       file.saveAttachment(doc, function(result) {
         socket.emit('files upload', result);
       });
-      // These are should be review on them class files
-      // var filename = new Date().getTime() + '' + process.hrtime()[1];
-      // file.save({
-      //   filename: filename,
-      //   _id: doc._id,
-      //   type: doc.type,
-      //   based64Image: doc.based64Image
-      // });
-      //
-      // project.pushFileToDb({
-      //   _id: doc._id,
-      //   picture: filename + '.' + doc.type
-      // }, function(callback) {
-      //   console.log(callback.result);
-      // });
     });
   });
 
