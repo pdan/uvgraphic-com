@@ -10,7 +10,7 @@ module.exports = exports = function(app, db, router, io) {
     next(); // make sure we go to the next routes and don't stop here
   });
 
-  app.get('/admin', function(res, req) {
+  app.get('/9adf7a9a28305055657a98f5cbe2b50d', function(res, req) {
     req.render('admin.html');
   });
 

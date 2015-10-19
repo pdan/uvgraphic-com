@@ -1,1 +1,38 @@
-Project
+<div class="ui container project">
+  <div class="ui stackable grid">
+    <div class="six wide column right-sidebar">
+
+
+      <div class="ui vertical menu">
+        <a class="item">
+          <img class="ui fluid image" alt="{{ project.name }}" ng-src="/uploads/{{ project._id }}/{{ project.pictures | MainPicture }}">
+        </a>
+        <a class="item">
+          <h4 class="ui header">نام پروژه</h4>
+          <p> {{ project.name }} </p>
+        </a>
+        <a class="item">
+          <h4 class="ui header">تاریخ ساخت</h4>
+          <p> {{ project.created | date }} </p>
+        </a>
+        <a class="item">
+          <h4 class="ui header">توضیحات</h4>
+          <p> {{ project.description }} </p>
+        </a>
+        <span class="item">
+          <h4 class="ui header">برچسب‌ها</h4>
+          <p>
+            <a href="/portfolio/{{ tag }}/0" ng-repeat="tag in project.tags">
+              #{{ tag }}
+            </a>
+          </p>
+        </span>
+      </div>
+    </div>
+    <div class="ten wide column">
+      <div class="ui segment" ng-repeat="picture in project.pictures | filter:false">
+        <img alt="" class="ui fluid image" ng-src="/uploads/{{ project._id }}/{{ picture.filename }}">
+      </div>
+    </div>
+  </div>
+</div>

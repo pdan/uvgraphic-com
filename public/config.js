@@ -1,7 +1,6 @@
 System.config({
   baseURL: "/",
   defaultJSExtensions: true,
-  buildCSS: false,
   transpiler: "babel",
   babelOptions: {
     "optional": [
@@ -13,6 +12,8 @@ System.config({
     "github:*": "packages/github/*",
     "npm:*": "packages/npm/*"
   },
+  buildCSS: false,
+
   map: {
     "angular": "github:angular/bower-angular@1.4.6",
     "angular-route": "github:angular/bower-angular-route@1.4.6",
@@ -21,6 +22,7 @@ System.config({
     "core-js": "npm:core-js@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.18",
     "jquery": "github:components/jquery@2.1.4",
+    "socket.io-client": "github:socketio/socket.io-client@1.3.7",
     "sroze/ngInfiniteScroll": "github:sroze/ngInfiniteScroll@1.2.1",
     "github:angular/bower-angular-route@1.4.6": {
       "angular": "github:angular/bower-angular@1.4.6"

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="image">
       <a href="/project/{{ project._id }}" class="main">
-        <img alt="Small" ng-src="/uploads/{{ project._id }}/{{ project.pictures | MainPicture }}" class="show">
+        <img alt="{{ project.name }}" ng-src="/uploads/{{ project._id }}/{{ project.pictures | MainPicture }}" class="show">
       </a>
     </div>
   </div>

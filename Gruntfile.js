@@ -13,8 +13,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Project settings
     app: {
-      public: 'public',
-      bower: require('./.bowerrc').directory || 'bower_components'
+      public: 'public'
     },
 
     // Watches files for changes and runs tasks based on the changed files
