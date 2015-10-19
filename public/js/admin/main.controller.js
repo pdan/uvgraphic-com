@@ -28,7 +28,7 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
     });
 
     socket.on('files upload', function(doc) {
-      if ($scope.project.pictures === undefined) {
+      if ($scope.project.pictures === undefined || $scope.project.pictures === null) {
         $scope.project.pictures = [];
       }
       if ($scope.project._id === doc._id) {
