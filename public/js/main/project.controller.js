@@ -8,7 +8,6 @@ class ProjectController {
     socket.emit('get project', query);
     socket.on('get project', function(doc) {
       $scope.project = doc;
-      console.log($scope.project);
     });
   }
 }

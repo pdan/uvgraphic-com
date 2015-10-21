@@ -8,7 +8,8 @@ function Project(db) {
     var self = this;
     var project = {
       name: 'New Project',
-      date: new Date().getTime()
+      date: new Date().getTime(),
+      created: new Date().getTime()
     };
     projects.insert(project, function(err, result) {
       if (err) {

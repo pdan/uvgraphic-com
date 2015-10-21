@@ -2,7 +2,7 @@ class PortfolioController {
   constructor($scope, $routeParams, socket) {
     var query = {
       clear: true,
-      sort: 'date',
+      sort: 'created',
       limit: 20,
       skip: 0
     };
