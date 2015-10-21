@@ -1,6 +1,6 @@
 define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app, io, angular, $) {
   app.controller('mainController', function($scope, socket) {
-
+    var uploadImagesLength = 0;
     $scope.newStatus = false;
     $scope.loader = false;
     $scope.projects = [];
@@ -33,8 +33,13 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
       }
       if ($scope.project._id === doc._id) {
         $scope.project.pictures.push({
-          filename: doc.filename
+          filename: doc.filename,
+          main: false
         });
+        uploadImagesLength--;
+        if (uploadImagesLength < 1) {
+          $scope.switchLoader(false);
+        }
       }
     });
 
@@ -103,11 +108,12 @@ define(['admin/app', 'admin/socket.factory', 'angular', 'jquery'], function(app,
     };
 
     $scope.uploadImages = function(element) {
+      $scope.switchLoader(true);
+      uploadImagesLength = element.files.length;
       var ImageLoader = function(imageIndex) {
 
         return function(evt) {
           $scope.images[imageIndex].src = evt.target.result;
-          window.gsm = evt;
           socket.emit('files upload', {
             _id: $scope.project._id,
             name: $scope.images[imageIndex].fileName,
