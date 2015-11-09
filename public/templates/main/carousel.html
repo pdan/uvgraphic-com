@@ -1,0 +1,5 @@
+<div id="carousel" class="owl-carousel owl-theme">
+  <div class="item" ng-repeat="project in projects">
+    <img class="lazyOwl" data-src="/uploads/{{ project._id }}/{{ project.pictures | MainPicture }}" alt="" />
+  </div>
+</div>

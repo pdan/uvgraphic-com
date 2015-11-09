@@ -11,7 +11,7 @@
       <a class="item" href="/contact" ng-class="{active: updateMenuBasedOnLocation() === 'contact'}">تماس</a>
     </div>
     <div class="ui submenu" ng-show="submenu">
-      <a class="item" href="/portfolio/{{ tag[0] }}/0" ng-repeat="tag in tags">
+      <a class="item" href="/portfolio/{{ tag[0] }}/0" ng-repeat="tag in tags" ng-class="{active: currentTag === tag[0]}">
         {{ tag[0] }}
       </a>
     </div>

@@ -20,7 +20,7 @@ function HeaderMenu($location, socket) {
       scope.updateMenuBasedOnLocation = function () {
           var prefix = $location.path().split('/')[1];
           scope.submenu = false;
-          if (prefix === 'portfolio' || prefix === undefined) {
+          if (prefix === 'portfolio' || prefix === 'project' || prefix === undefined) {
             scope.submenu = true;
           }
           return prefix;

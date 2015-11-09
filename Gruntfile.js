@@ -41,7 +41,9 @@ module.exports = function(grunt) {
           compress: true
         },
         files: {
-          '<%= app.public %>/css/main.css': [
+          '<%= app.public %>/css/build.css': [
+            '<%= app.public %>/packages/github/OwlFonk/OwlCarousel@1.3.2/owl-carousel/owl.carousel.css',
+            '<%= app.public %>/packages/github/OwlFonk/OwlCarousel@1.3.2/owl-carousel/owl.theme.css',
             '<%= app.public %>/less/main.less'
           ],
           '<%= app.public %>/css/admin.css': [
@@ -97,7 +99,7 @@ module.exports = function(grunt) {
           styles: {
             buildCSS: {
 							cwd: '<%= app.public %>/',
-							files: 'css/main.css'
+							files: 'css/build.css'
 						}
           },
         }

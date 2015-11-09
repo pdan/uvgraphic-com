@@ -1,5 +1,5 @@
 class PortfolioController {
-  constructor($scope, $routeParams, socket) {
+  constructor($scope, $routeParams, socket, $location, $rootScope) {
     var query = {
       clear: true,
       sort: 'created',
@@ -10,6 +10,7 @@ class PortfolioController {
 
     if ($routeParams.tag) {
       query.tags = [$routeParams.tag];
+      $rootScope.currentTag = $routeParams.tag;
     }
 
     if ($routeParams.page) {
@@ -44,6 +45,6 @@ class PortfolioController {
   }
 }
 
-PortfolioController.$inject = ['$scope', '$routeParams', 'socket'];
+PortfolioController.$inject = ['$scope', '$routeParams', 'socket', '$location', '$rootScope'];
 
 export default PortfolioController

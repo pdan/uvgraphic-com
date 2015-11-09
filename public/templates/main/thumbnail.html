@@ -8,10 +8,10 @@
   </div>
   <div class="caption">
     <div class="title">
-      <a href="/project/{{ project._id }}">{{ project.name }}</a>
+      <a href="/project/{{ project._id }}">{{ project.name | PersianFilter }}</a>
     </div>
     <div class="sub">
-      {{ project.date | date}}
+      {{ project.created | date}}
     </div>
   </div>
 </div>
