@@ -1,0 +1,52 @@
+.carousel-wrapper {
+  background-color: lighten(#464e54, 50%);
+  #carousel {
+    direction: ltr;
+    margin: auto;
+    max-width: 600px;
+    .item {
+      display: block;
+      padding: 30px 0;
+      margin: 5px;
+      color: #fff;
+      text-align: center;
+      background-color: lighten(#464e54, 20%);
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 15px;
+
+      img {
+        -moz-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+        -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+      }
+    }
+  }
+  .owl-theme {
+    .owl-buttons i {
+      margin-top: 2px;
+    }
+    .owl-controls {
+      .owl-buttons {
+        div {
+          position: absolute;
+          i {
+            line-height: 1em;
+            width: 0.5em;
+            height:1.1em;
+            margin:0px;
+          }
+        }
+        .owl-prev {
+          left: -45px;
+          top: 160px;
+        }
+        .owl-next {
+          right: -45px;
+          top: 160px;
+        }
+      }
+    }
+  }
+}

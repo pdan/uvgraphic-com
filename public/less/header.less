@@ -15,27 +15,31 @@ header {
     margin-top: 2em;
     .item {
       border-width: 1px;
-      color: rgba(34,36,38,.50);;
+      color: rgba(34,36,38,.50);
       margin-bottom: -1px;
-      padding-right: 0px;
-      padding-left: 0px;
+      padding-right: 0;
+      padding-left: 0;
       margin: auto 1.18181818em;
-
       &.active,
       &:hover {
         border-color: rgba(34,36,38,.90);
-        color: rgba(34,36,38,.90);;
+        color: rgba(34,36,38,.90);
         font-weight: normal;
       }
     }
   }
-
   .ui.submenu {
     font-size: 10px;
-
+    line-height: 25px;
     a {
-      color: rgba(34,36,38,.40);;
-      margin: auto 1.18181818em;
+      color: rgba(34,36,38,.40);
+      margin: auto 0.8em;
+      padding: 0 0.28em;
+      &.active,
+      &:hover {
+        background: #eee;
+        border-radius: 5px;
+      }
     }
   }
 }

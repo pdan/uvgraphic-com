@@ -15,6 +15,7 @@ import HeaderMenu from 'js/main/header-menu.directive';
 import SocketService from 'js/main/socket.service';
 
 import MainPicture from 'js/main/main-picture.filter';
+import PersianFilter from 'js/main/persian.filter';
 
 let app = angular
   .module('portfolio', ['infinite-scroll', 'ngRoute'])
@@ -26,6 +27,7 @@ let app = angular
   .controller('ProjectController', ProjectController)
   .directive('headerMenu', HeaderMenu)
   .service('socket', SocketService)
-  .filter('MainPicture', MainPicture);
+  .filter('MainPicture', MainPicture)
+  .filter('PersianFilter', PersianFilter);
 
 export default app;
