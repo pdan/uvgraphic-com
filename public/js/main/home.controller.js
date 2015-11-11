@@ -10,7 +10,7 @@ class HomeController {
     socket.init(['query count']);
 
     socket.on('pagination project', function(docs) {
-      $scope.projects = docs;
+      $scope.carousel = docs;
       $timeout(function() {
         $(".owl-carousel").owlCarousel({
           navigation: true,
@@ -27,6 +27,14 @@ class HomeController {
             '<i class="angle inverted big left icon"></i>'
           ]
         });
+      });
+
+      query.sort = 'date';
+      socket.init(['pagination project']);
+      socket.init(['query count']);
+      socket.emit('pagination project', query);
+      socket.on('pagination project', function(docs) {
+        $scope.projects = docs;
       });
 
     });

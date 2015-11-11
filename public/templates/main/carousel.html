@@ -1,5 +1,7 @@
 <div id="carousel" class="owl-carousel owl-theme">
-  <div class="item" ng-repeat="project in projects">
-    <img class="lazyOwl" data-src="/uploads/{{ project._id }}/{{ project.pictures | MainPicture }}" alt="" />
+  <div class="item" ng-repeat="slide in carousel">
+    <a href="/project/{{ slide._id }}">
+      <img class="lazyOwl" data-src="/uploads/{{ slide._id }}/{{ slide.pictures | MainPicture }}" alt="" />
+    </a>
   </div>
 </div>
