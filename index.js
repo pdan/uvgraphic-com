@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 
-MongoClient.connect('mongodb://localhost:27017/portfolio', function(err, db) {
+MongoClient.connect('mongodb://mongodb:27017/portfolio', function(err, db) {
   if (err) {
     throw err;
   }
