@@ -1,0 +1,1 @@
+module.exports = require("github:sroze/ngInfiniteScroll@1.2.1/ng-infinite-scroll");

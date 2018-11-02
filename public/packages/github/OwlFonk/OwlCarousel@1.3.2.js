@@ -1,0 +1,1 @@
+module.exports = require("github:OwlFonk/OwlCarousel@1.3.2/owl-carousel/owl.carousel");
